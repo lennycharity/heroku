@@ -1,0 +1,75 @@
+<marquee direction="right"> <center> <h1> JORAH GARRERY COMPANY </h1> </center></marquee>
+<style>
+h1{
+  color: blue;
+
+}
+h2{
+  color: black;
+
+}
+h4{
+  color:red;
+}
+.card-img-top
+{
+   height:200px;
+   width:200px;
+}
+body{
+  background color:grey;
+}
+footer{
+    background: grey;
+    padding: 25px;
+
+}
+footer p{
+    text-align: center;
+    color: #fff;
+}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css" integrity="sha384-PDle/QlgIONtM1aqA2Qemk5gPOE7wFq8+Em+G/hmo5Iq0CCmYZLv3fVRDJ4MMwEA" crossorigin="anonymous">
+</style>
+
+
+<strong><center><h2>FILMS </h2></center></strong>
+<div class="container">   
+<% if !flash[:notice].blank? %>   
+   <div>   
+      <%= flash[:notice] %>   
+   </div>   
+<% end %>   
+  
+<br>   
+  
+<center><b><u><h4><%= link_to "New Forme", new_forme_path %></h4></u></b></center>  
+<br>   
+<br>   
+
+<div class="album py-5 bg-light">
+        <div class="container">
+        <div class="row">
+ <% @formes.each do |forme| %> 
+          
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                <img src="<%= forme.attachment %>" class="card-img-top"  alt="Card image cap">
+                <div class="card-body">
+                  <p class="card-text"><b>Title:</b><%= forme.title %><br><b>category:</b><%= forme.category %><br><b>Year:</b><%= forme.year %><br><b>price:</b><%= forme.price %></p>
+                  <b><u><%= link_to "Download", forme.attachment_url %></b></u>
+                  <b><u><%= link_to "Delete",  forme, method: :delete, confirm: "Are you sure you want to delete #{forme.attachment}?" %>
+                  </b></u>
+                  </div>
+                </div>
+              </div>
+              <% end %> 
+            </div>
+            <br>
+            <br>
+            <footer>
+      
+            <p>&copy; Information Technology- 2018</p>
+    </footer>
+
+
+
